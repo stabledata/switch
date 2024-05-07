@@ -3,15 +3,10 @@ import type { Dependencies } from "./surface.app.ctx";
 
 import { handleStaticAssets } from "./handlers/assets.service";
 import { pingRouteHandler } from "./handlers/ping.handler";
-import { authRoutesHandlers } from "./handlers/auth.handlers";
-// import { members } from "./handlers/members.service";
-// renders tanstack router SSR
 import { viewRouteHandler } from "./handlers/view.handler";
-
-import dotenv from "dotenv";
-import { membersRouteHandlers } from "./handlers/members.handlers";
 import { errorHandler } from "./handlers/error.handlers";
 
+import dotenv from "dotenv";
 dotenv.config();
 
 export const app = (inject: Partial<Dependencies> = {}) => {
@@ -21,12 +16,6 @@ export const app = (inject: Partial<Dependencies> = {}) => {
 
       // ping example (healthcheck)
       .route("/ping", pingRouteHandler(inject))
-
-      // auth
-      .route("/auth", authRoutesHandlers(inject))
-
-      // members
-      .route("/api/members", membersRouteHandlers(inject))
 
       // views
       .route("/*", viewRouteHandler(inject))
