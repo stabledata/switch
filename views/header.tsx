@@ -13,6 +13,13 @@ export function Header() {
       <Link to="/" activeProps={activeProps} activeOptions={{ exact: true }}>
         Home
       </Link>
+      <Link
+        to="/input"
+        activeProps={activeProps}
+        activeOptions={{ exact: true }}
+      >
+        Input
+      </Link>
 
       <a href="https://github.com/stabledata/switch">
         <Github size={20} />
