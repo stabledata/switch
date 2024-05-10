@@ -3,7 +3,7 @@ import { createFactory } from "hono/factory";
 import { decode, sign, verify } from "hono/jwt";
 import { cookies } from "./cookies/cookies";
 import { logger } from "./logger/logger";
-import { memberServiceClient } from "./handlers/members.handlers";
+
 import { Context } from "hono";
 
 const jwt = { decode, sign, verify };
@@ -16,9 +16,6 @@ export type Dependencies = {
 
   // specifically for testing, allows overwriting the rpc client
   rpcClientMock?: typeof hc;
-
-  // "services" injection
-  memberServiceClient: typeof memberServiceClient;
 };
 
 type Env = {
@@ -37,10 +34,7 @@ export const applyContext = (injections: Partial<Dependencies>) =>
     c.set("logger", injections.logger ?? logger);
     c.set("cookies", injections.cookies ?? cookies(c));
     c.set("jwt", jwt);
-    c.set(
-      "memberServiceClient",
-      injections.memberServiceClient ?? memberServiceClient
-    );
+
     c.set("rpcClientMock", injections.rpcClientMock);
     await next();
   });
