@@ -19,7 +19,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    /* pathing */
+
+    /* paths */
     "paths": {
       "switch/*": ["./switch/*"]
     }

@@ -4,6 +4,7 @@ import { createRouter } from "./surface.router";
 import { hc } from "hono/client";
 import { AppType } from "./surface.app";
 import "./views/index.css";
+import "./views/shad.css";
 
 export const rpcClient = hc<AppType>(`/`, {
   headers: {
