@@ -16,7 +16,7 @@ function Home() {
       <p className="text-md font-medium">Declarative components</p>
 
       <h3 className="text-center w-full leading-8 text-md">
-        Built with React Form Hook, Radix UI and Tailwind/Vanilla CSS.
+        Built on React Form Hook, Shadcn-UI and Tailwind CSS.
       </h3>
     </div>
   );

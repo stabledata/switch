@@ -1,6 +1,5 @@
 {
-  "name": "@surface/switch",
-  "private": true,
+  "name": "@stabledata/switch",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -12,6 +11,8 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.9.1",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@tanstack/react-router": "^1.28.5",
     "@tanstack/react-router-server": "^1.28.5",
@@ -27,6 +28,7 @@
     "pino": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.4",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "vite-tsconfig-paths": "^4.3.2",

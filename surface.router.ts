@@ -3,12 +3,10 @@ import {
   createRouter as tanStackCreateRouter,
 } from "@tanstack/react-router";
 import { routeTree } from "./.routes.tree";
-import { User } from "./handlers/auth.handlers";
 import { inflateState } from "./state/registry";
 import { rpcClient } from "./surface.client";
 
 export type RouterContext = {
-  user?: User;
   rpc?: typeof rpcClient;
 };
 
