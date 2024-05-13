@@ -1,4 +1,5 @@
 import { Form, useInputSwitches } from "../hooks/use-form";
+import { SwitchToggle } from "./controls/toggle";
 import { SwitchTextField } from "./controls/text";
 import { Button } from "./ui/button";
 // import { RDFCheckbox } from "./RDFCheckbox";
@@ -27,7 +28,7 @@ export function SwitchForm<T extends object>({
     register,
     errors,
     changedState,
-    // control,
+    control,
     handleSubmit: rhfSubmitHandler,
     handleSubmitWithFormData,
   } = useInputSwitches<T>(form);
@@ -79,38 +80,24 @@ export function SwitchForm<T extends object>({
           //     />
           //   );
           // // checkbox
-          // case "checkbox":
-          //   return (
-          //     <RDFCheckbox
-          //       key={`${field.name}-${index}`}
-          //       name={field.name}
-          //       label={field.label}
-          //       options={field.options}
-          //       disabled={field.disabled}
-          //       hidden={field.hidden}
-          //       helper={field.helpText || field.HelpText}
-          //       control={control}
-          //       register={register}
-          //       errors={errors}
-          //     />
-          //   );
-          // // switch
-          // case "switch":
-          //   return (
-          //     <RDFSwitch
-          //       key={`${field.name}-${index}`}
-          //       name={field.name}
-          //       label={field.label}
-          //       options={field.options}
-          //       helper={field.helpText || field.HelpText}
-          //       disabled={field.disabled}
-          //       hidden={field.hidden}
-          //       defaultValue={field.default as boolean}
-          //       control={control}
-          //       register={register}
-          //       errors={errors}
-          //     />
-          //   );
+          case "checkbox":
+          case "switch":
+            return (
+              <SwitchToggle
+                type={field.type}
+                key={`${field.name}-${index}`}
+                name={field.name}
+                label={field.label}
+                options={field.options}
+                disabled={field.disabled}
+                hidden={field.hidden}
+                helperText={field.helperText}
+                control={control}
+                register={register}
+                errors={errors}
+              />
+            );
+
           // // select
           // case "select":
           //   return (

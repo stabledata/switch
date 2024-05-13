@@ -3,11 +3,7 @@ import { Label } from "switch/components/ui/label";
 import { Input } from "switch/components/ui/input";
 import { Textarea } from "switch/components/ui/textarea";
 import { cn } from "switch/lib/utils";
-/**
- *
- * @props see {@link RDFTextFieldProps}
- * @returns field with given options
- */
+
 export const SwitchTextField = ({
   name,
   type,
@@ -18,12 +14,12 @@ export const SwitchTextField = ({
   options,
   register,
   disabled,
-  // hidden,
+  hidden,
 }: SwitchInputFieldProps) => {
   const error = errors !== undefined ? errors[name] : undefined;
 
   return (
-    <div className="flex flex-col w-full items-start">
+    <div className={cn("flex flex-col w-full items-start", hidden && "hidden")}>
       <Label htmlFor={name} className="py-2">
         {label}
       </Label>

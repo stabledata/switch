@@ -33,7 +33,7 @@ export const formConfig: SwitchInput[] = [
   },
   {
     type: "password",
-    name: "Passphrase",
+    name: "passphrase",
     label: "A password value",
     options: {
       required: "This field is required, fill it out!",
@@ -56,11 +56,13 @@ export const formConfig: SwitchInput[] = [
     // observe: true,
   },
 
-  // hidden code field (stateful logic)
+  // hidden field
   {
-    type: "switch",
-    name: "password-switch",
-    label: "Activate super password code",
+    type: "text",
+    name: "hidden",
+    label: "Matters not, it's hidden",
+    defaultValue: "This is a hidden field",
+    hidden: true,
     // hidden: (observableState: Partial<FormState>) => {
     //   return observableState.code !== '123';
     // }
@@ -80,8 +82,8 @@ export const formConfig: SwitchInput[] = [
     name: "favorite-number",
     label: "A number between one and five, please",
     options: {
-      min: 1,
-      max: 5,
+      min: { value: 1, message: "Please enter a number between 1 and 5" },
+      max: { value: 5, message: "Please enter a number between 1 and 5" },
     },
   },
 
@@ -121,5 +123,34 @@ export const formConfig: SwitchInput[] = [
     label: "Tell us your story",
     placeholder: 'This is a "multiline" input type',
     helperText: "If you need some inspiration, read this help text",
+  },
+
+  {
+    type: "switch",
+    name: "auto-reply",
+    label: "Vacation mode (auto-reply to messages)",
+    defaultValue: true,
+  },
+  {
+    type: "switch",
+    name: "data-enabled",
+    label: "Enable cellular data roaming",
+    helperText: "Switches are cool 😎, but data roaming is usually not.",
+  },
+
+  {
+    type: "checkbox",
+    name: "send-spam",
+    label: "YES! Send me tons of spam and fomo inducing content",
+    defaultValue: true,
+  },
+  {
+    type: "checkbox",
+    name: "accept-terms",
+    label: "I accept the terms of the agreement",
+    helperText: "To continue, you must accept the terms",
+    options: {
+      required: "You must accept the terms!",
+    },
   },
 ];
