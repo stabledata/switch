@@ -45,7 +45,6 @@ export const useForm = <T>(
 export type SwitchBoard<T> = UseFormReturn & {
   errors?: FieldErrors;
   handleSubmitWithFormData: (data: FieldValues) => FormData;
-  // FIXME: we can probs just kill this.
   changedState: Partial<T>;
 };
 
@@ -62,8 +61,7 @@ export const useInputSwitches = <T extends object>(
     onSubmit,
   } = form;
 
-  // observe specified fields
-  // Kill it?
+  // observe changes in form
   const changedState = Object.values(form.fields)
     .filter((field: SwitchInputField) => field.watch)
     .map((field: SwitchInputField) => ({

@@ -1,5 +1,6 @@
 import { Form, useInputSwitches } from "../hooks/use-form";
 import { SwitchTextField } from "./controls/text";
+import { Button } from "./ui/button";
 // import { RDFCheckbox } from "./RDFCheckbox";
 // import { RDFSelect } from "./RDFSelect";
 // import { RDFRadio } from "./RDFRadios";
@@ -25,13 +26,19 @@ export function SwitchForm<T extends object>({
   const {
     register,
     errors,
+    changedState,
     // control,
     handleSubmit: rhfSubmitHandler,
     handleSubmitWithFormData,
   } = useInputSwitches<T>(form);
 
+  console.log(changedState);
+
   return (
-    <form onSubmit={rhfSubmitHandler(handleSubmitWithFormData)}>
+    <form
+      onSubmit={rhfSubmitHandler(handleSubmitWithFormData)}
+      className="w-full flex flex-col gap-4 items-start"
+    >
       {form.fields.map((field, index) => {
         switch (field.type) {
           // text field
@@ -197,9 +204,9 @@ export function SwitchForm<T extends object>({
           //   );
         }
       })}
-      <button type="submit" className="submit" disabled={isInFlight}>
+      <Button type="submit" className="submit" disabled={isInFlight}>
         {isInFlight ? submitButtonLabelInFlight : submitButtonLabel}
-      </button>
+      </Button>
     </form>
   );
 }
