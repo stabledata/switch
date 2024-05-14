@@ -61,9 +61,9 @@ export const useInputSwitches = <T extends object>(
     onSubmit,
   } = form;
 
-  // observe changes in form
+  // observe changes as they happen for switches that are "realtime" enabled
   const changedState = Object.values(form.fields)
-    .filter((field: SwitchInputField) => field.watch)
+    .filter((field: SwitchInputField) => field.realtime)
     .map((field: SwitchInputField) => ({
       name: field.name,
       value: watch(field.name),

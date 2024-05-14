@@ -4,17 +4,13 @@ import { Checkbox } from "../ui/checkbox";
 import { Switch } from "../ui/switch";
 import { ControlledInput } from "switch/types";
 import { cn } from "switch/lib/utils";
+import { Help } from "../help";
 
-/**
- *
- * @props see {@link RDFFieldProps}
- * @returns field with given options
- */
 export const SwitchToggle = ({
   name,
   type,
   label,
-  helperText,
+  help,
   control,
   options,
   errors,
@@ -44,7 +40,7 @@ export const SwitchToggle = ({
                   >
                     {label}
                   </Label>
-                  {helperText ? <p className="text-xs">{helperText}</p> : null}
+                  <Help help={help} />
                 </div>
                 <Switch
                   id={name}
@@ -68,7 +64,7 @@ export const SwitchToggle = ({
                   >
                     {label}
                   </Label>
-                  {helperText ? <p className="text-xs">{helperText}</p> : null}
+                  <Help help={help} />
                 </div>
               </div>
             )}

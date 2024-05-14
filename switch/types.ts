@@ -17,13 +17,15 @@ export type SwitchInputType =
   | "radio"
   | "switch"
   | "media"
-  | "list"
-  | "table"
   | "date"
   | "date-time";
 
-// this part should stay serializable, thus this options thing
+export type Width = "full" | "half" | "third" | "quarter" | "short" | undefined;
+
+// we _want_ to keep this serializable. though most of the time that
+// will mean this is data rather than type checked code anyway.
 type SerializableOptions = Partial<RegisterOptions>;
+
 export type SwitchInputField = {
   type: SwitchInputType;
   name: string;
@@ -31,15 +33,22 @@ export type SwitchInputField = {
   // type" here... possibly.
   defaultValue?: string | number | boolean;
   label?: string;
-  watch?: boolean;
+  realtime?: boolean; // TBD - probably call it "realtime"
   placeholder?: string;
-  helperText?: string;
+  help?: {
+    text?: string;
+    linkUrl?: string;
+    linkText?: string;
+  };
   disabled?: boolean;
   hidden?: boolean;
+  width?: Width;
   // for media upload
   previewType?: "hero" | "thumb" | "attachment";
   options?: SerializableOptions;
+  choices?: Choice[];
 };
+
 export type SwitchInput = SwitchInputField;
 
 export type SwitchInputFieldProps = SwitchInputField & {
@@ -54,4 +63,10 @@ export type SwitchInputFieldProps = SwitchInputField & {
 
 export type ControlledInput = SwitchInputFieldProps & {
   control: Control<FieldValues, unknown>;
+};
+
+type Choice = {
+  value: string | number | boolean;
+  label: string;
+  disabled?: boolean;
 };

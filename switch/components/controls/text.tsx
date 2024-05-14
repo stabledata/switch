@@ -2,15 +2,17 @@ import { SwitchInputFieldProps } from "switch/types";
 import { Label } from "switch/components/ui/label";
 import { Input } from "switch/components/ui/input";
 import { Textarea } from "switch/components/ui/textarea";
-import { cn } from "switch/lib/utils";
+import { cn, widthToClassName } from "switch/lib/utils";
+import { Help } from "../help";
 
 export const SwitchTextField = ({
   name,
   type,
   label,
   placeholder,
-  helperText,
+  help,
   errors,
+  width,
   options,
   register,
   disabled,
@@ -20,7 +22,7 @@ export const SwitchTextField = ({
 
   return (
     <div className={cn("flex flex-col w-full items-start", hidden && "hidden")}>
-      <Label htmlFor={name} className="py-2">
+      <Label htmlFor={name} className="py-2 peer-disabled:opacity-70">
         {label}
       </Label>
       {error && error.message ? (
@@ -30,7 +32,11 @@ export const SwitchTextField = ({
         <Textarea
           id={name}
           placeholder={placeholder}
-          className={cn("my-2", error && "border-red-700")}
+          className={cn(
+            "my-2 peer",
+            widthToClassName(width),
+            error && "border-red-700"
+          )}
           disabled={disabled as boolean}
           {...register(name, options)}
         />
@@ -39,12 +45,16 @@ export const SwitchTextField = ({
           type={type}
           id={name}
           placeholder={placeholder}
-          className={cn(error && "border-red-700")}
+          className={cn(
+            "my-2 peer",
+            widthToClassName(width),
+            error && "border-red-700"
+          )}
           disabled={disabled as boolean}
           {...register(name, options)}
         />
       )}
-      {helperText ? <p className="text-sm mt-0">{helperText}</p> : null}
+      <Help help={help} />
     </div>
   );
 };

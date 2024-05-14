@@ -5,7 +5,7 @@ export const formConfig: SwitchInput[] = [
   {
     type: "text",
     name: "simple",
-    label: "A simple entry",
+    label: "Simple text input",
     placeholder: "Whatever you can imagine can go here",
   },
 
@@ -13,7 +13,7 @@ export const formConfig: SwitchInput[] = [
   {
     type: "text",
     name: "input-w-default",
-    label: "This entry has a default value",
+    label: "Text with default value",
     defaultValue: "This *is* a default value, neat.",
   },
 
@@ -28,6 +28,7 @@ export const formConfig: SwitchInput[] = [
     // https://react-hook-form.com/api/useform/register
     options: {
       required: "This field is required, fill it out!",
+      // validate:  // DO NOT DO THIS! Functions are not serializable.
     },
     // observe: true,
   },
@@ -35,6 +36,7 @@ export const formConfig: SwitchInput[] = [
     type: "password",
     name: "passphrase",
     label: "A password value",
+    width: "half",
     options: {
       required: "This field is required, fill it out!",
     },
@@ -45,8 +47,9 @@ export const formConfig: SwitchInput[] = [
   {
     type: "text",
     name: "code",
-    label: "Short code",
+    label: "Short code (max len validation)",
     placeholder: "123",
+    width: "short",
     options: {
       maxLength: {
         value: 3,
@@ -68,19 +71,12 @@ export const formConfig: SwitchInput[] = [
     // }
   },
 
-  // disabled
-  {
-    type: "text",
-    name: "disabled",
-    label: "You cannot enter anything here",
-    disabled: true,
-  },
-
   // number type
   {
     type: "number",
     name: "favorite-number",
     label: "A number between one and five, please",
+    width: "short",
     options: {
       min: { value: 1, message: "Please enter a number between 1 and 5" },
       max: { value: 5, message: "Please enter a number between 1 and 5" },
@@ -101,18 +97,56 @@ export const formConfig: SwitchInput[] = [
   //   label: "Select a date",
   // },
 
+  // disabled
+  {
+    type: "text",
+    name: "disabled",
+    label: "You cannot enter anything here",
+    disabled: true,
+  },
+
+  // choice - radio
+  {
+    type: "radio",
+    name: "radio",
+    label: "Choose one of these options",
+    help: {
+      text: "You can only choose one, so choose wisely",
+    },
+    defaultValue: "two",
+    choices: [
+      { value: "one", label: "Option one" },
+      { value: "two", label: "Option two" },
+      { value: "three", label: "Option three", disabled: true },
+    ],
+  },
+
   // custom validation (todo: make me serialize!, or just use static lib)
   {
     type: "text",
-    name: "customizing",
-    label: 'Enter anything that contains "ing"',
+    name: "pattern1",
+    label: 'Pattern validation (contains "ing", optional)',
     placeholder: "e.g. Running",
     // observe: true,
     options: {
-      validate: (value: string | string[]) => {
-        if (value.indexOf("ing") < 0) {
-          return 'That input does not contain "ing"';
-        }
+      pattern: {
+        value: /ing/i,
+        message: "Must contain the letters 'ing'",
+      },
+    },
+  },
+  {
+    type: "text",
+    name: "pattern2",
+    label: "Pattern validation (match ABC123)",
+    placeholder: "e.g. XYZ098",
+    width: "third",
+    // observe: true,
+    options: {
+      required: true,
+      pattern: {
+        value: /^[A-Za-z]{3}\d{3}$/i,
+        message: "Doesn't match the pattern AAA222",
       },
     },
   },
@@ -122,7 +156,7 @@ export const formConfig: SwitchInput[] = [
     name: "story",
     label: "Tell us your story",
     placeholder: 'This is a "multiline" input type',
-    helperText: "If you need some inspiration, read this help text",
+    help: { text: "If you need some inspiration, read this help text" },
   },
 
   {
@@ -135,7 +169,7 @@ export const formConfig: SwitchInput[] = [
     type: "switch",
     name: "data-enabled",
     label: "Enable cellular data roaming",
-    helperText: "Switches are cool 😎, but data roaming is usually not.",
+    help: { text: "Switches are cool 😎, but data roaming is usually not." },
   },
 
   {
@@ -148,7 +182,12 @@ export const formConfig: SwitchInput[] = [
     type: "checkbox",
     name: "accept-terms",
     label: "I accept the terms of the agreement",
-    helperText: "To continue, you must accept the terms",
+    help: {
+      text: "To continue, you must accept",
+      linkText: "the terms.",
+      linkUrl:
+        "https://termly.io/resources/templates/terms-and-conditions-template/",
+    },
     options: {
       required: "You must accept the terms!",
     },
