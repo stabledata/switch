@@ -32,7 +32,7 @@ export const SwitchToggle = ({
             ) : null}
 
             {type === "switch" ? (
-              <div className="flex items-center space-x-2 justify-between w-full">
+              <div className="flex items-start space-x-2 justify-between w-full">
                 <div className="grow flex flex-col w-full gap-2 justify-start">
                   <Label
                     htmlFor={name}

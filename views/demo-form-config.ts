@@ -30,7 +30,6 @@ export const formConfig: SwitchInput[] = [
       required: "This field is required, fill it out!",
       // validate:  // DO NOT DO THIS! Functions are not serializable.
     },
-    // observe: true,
   },
   {
     type: "password",
@@ -40,7 +39,6 @@ export const formConfig: SwitchInput[] = [
     options: {
       required: "This field is required, fill it out!",
     },
-    // observe: true,
   },
 
   // max len, code validation
@@ -56,7 +54,6 @@ export const formConfig: SwitchInput[] = [
         message: "You entered more than 3 characters in this field",
       },
     },
-    // observe: true,
   },
 
   // hidden field
@@ -88,6 +85,7 @@ export const formConfig: SwitchInput[] = [
     type: "email",
     name: "email",
     label: "Enter an email",
+    width: "three-quarters",
   },
 
   // date (todo)
@@ -121,13 +119,29 @@ export const formConfig: SwitchInput[] = [
     ],
   },
 
+  // choice - select
+  {
+    type: "select",
+    name: "selection",
+    label: "Select one of these fine options",
+    help: {
+      text: "Note, you can scroll through this dropdown",
+    },
+    defaultValue: "two",
+    choices: Array.from({ length: 25 }, (_, i) => ({
+      value: i.toString(),
+      label: `Option ${i + 1}`,
+    })),
+  },
+
   // custom validation (todo: make me serialize!, or just use static lib)
   {
     type: "text",
     name: "pattern1",
     label: 'Pattern validation (contains "ing", optional)',
     placeholder: "e.g. Running",
-    // observe: true,
+    width: "two-thirds",
+
     options: {
       pattern: {
         value: /ing/i,
@@ -141,7 +155,7 @@ export const formConfig: SwitchInput[] = [
     label: "Pattern validation (match ABC123)",
     placeholder: "e.g. XYZ098",
     width: "third",
-    // observe: true,
+
     options: {
       required: true,
       pattern: {

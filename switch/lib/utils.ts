@@ -14,8 +14,12 @@ export function widthToClassName(w: Width) {
       return "w-1/2";
     case "third":
       return "w-1/3";
+    case "two-thirds":
+      return "w-2/3";
     case "quarter":
       return "w-1/4";
+    case "three-quarters":
+      return "w-3/4";
     case "short":
       return "w-[75px]";
 

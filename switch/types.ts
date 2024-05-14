@@ -20,7 +20,15 @@ export type SwitchInputType =
   | "date"
   | "date-time";
 
-export type Width = "full" | "half" | "third" | "quarter" | "short" | undefined;
+export type Width =
+  | "full"
+  | "half"
+  | "third"
+  | "quarter"
+  | "short"
+  | "two-thirds"
+  | "three-quarters"
+  | undefined;
 
 // we _want_ to keep this serializable. though most of the time that
 // will mean this is data rather than type checked code anyway.
@@ -69,4 +77,8 @@ type Choice = {
   value: string | number | boolean;
   label: string;
   disabled?: boolean;
+  group?: {
+    choices: Choice[]; // there is not recursive support for this yet.
+    heading: string;
+  };
 };

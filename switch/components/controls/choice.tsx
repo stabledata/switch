@@ -2,20 +2,23 @@ import { Controller } from "react-hook-form";
 import { Label } from "../ui/label";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { ControlledInput } from "switch/types";
-import { cn } from "switch/lib/utils";
+import { cn, widthToClassName } from "switch/lib/utils";
 import { Help } from "../help";
+import { Select, SelectContent, SelectItem, SelectTrigger } from "../ui/select";
 
 export const SwitchChoice = ({
   name,
   type,
   label,
+  placeholder = "Select an option",
   help,
   control,
   options,
   errors,
   disabled,
-  choices,
+  choices = [],
   hidden,
+  width,
 }: ControlledInput) => {
   const error = errors !== undefined ? errors[name] : undefined;
 
@@ -50,8 +53,11 @@ export const SwitchChoice = ({
                 defaultValue={field.value}
                 className="flex flex-col space-y-1"
               >
-                {choices.map(({ value, label: choiceLabel, disabled }) => (
-                  <div className="flex items-center space-x-2 w-full">
+                {choices.map(({ value, label: choiceLabel, disabled }, i) => (
+                  <div
+                    className="flex items-center space-x-2 w-full"
+                    key={`choice-${name}-${i}`}
+                  >
                     <RadioGroupItem
                       id={choiceLabel}
                       value={value as string}
@@ -67,7 +73,28 @@ export const SwitchChoice = ({
                   </div>
                 ))}
               </RadioGroup>
-            ) : null}
+            ) : (
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <SelectTrigger className={cn(widthToClassName(width))}>
+                  {choices.find((c) => c.value === field.value)?.label ??
+                    placeholder}
+                </SelectTrigger>
+                <SelectContent>
+                  {choices.map(
+                    ({ value, label: choiceLabel, group, disabled }, i) =>
+                      group ? null : (
+                        <SelectItem
+                          key={`choice-${name}-${i}`}
+                          value={value as string}
+                          disabled={disabled}
+                        >
+                          {choiceLabel}
+                        </SelectItem>
+                      )
+                  )}
+                </SelectContent>
+              </Select>
+            )}
           </div>
         );
       }}

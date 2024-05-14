@@ -19,10 +19,10 @@ function FormDemo() {
 
   return (
     <div className="container mx-auto px-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
-        <div className="flex flex-col gap-4 py-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20">
+        <div className="flex flex-col gap-4 py-6 text-right">
           <h3>Inputs Field "Switchboard"</h3>
-          <h4>(a.k.a Form)</h4>
+          <h4>a.k.a Form</h4>
           <p className="text-md leading-8">
             Forms are configured using serializable values. A library of simple
             validations is usually sufficient for most tasks. When validation
@@ -30,9 +30,9 @@ function FormDemo() {
             which a future stable-like paradigm will be created.
           </p>
         </div>
-        <div className="p-6">
+        <div className="flex flex-col py-6 gap-4">
           <h3>Inputs Preview</h3>
-          <p className="mb-5">Please fill me out!</p>
+          <h4>Try me! Fill out some fields</h4>
           <SwitchForm form={form} className="mb-5" />
         </div>
         {result ? (
