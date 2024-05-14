@@ -24,7 +24,7 @@ export const SwitchTextField = ({
         {label}
       </Label>
       {error && error.message ? (
-        <p className="text-red-700 text-sm">{error.message as string}</p>
+        <p className="text-red-700 text-sm my-1">{error.message as string}</p>
       ) : null}
       {type === "multiline" ? (
         <Textarea
