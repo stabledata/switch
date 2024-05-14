@@ -2,7 +2,7 @@ import { Form, useInputSwitches } from "../hooks/use-form";
 import { SwitchToggle } from "./controls/toggle";
 import { SwitchTextField } from "./controls/text";
 import { Button } from "./ui/button";
-import { cn } from "switch/lib/utils";
+import { cn } from "../lib/utils";
 import { SwitchChoice } from "./controls/choice";
 
 // import { RDFDatePicker } from "./RDFDatePicker";

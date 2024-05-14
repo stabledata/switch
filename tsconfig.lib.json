@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "node",
+    "outDir": "./switch/dist/esm",
+    "rootDir": "./switch",
+    "declaration": true,
+    "declarationDir": "./switch/dist/types",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx",
+    "paths": {
+      "switch/*": ["./switch/*"]
+    }
+  },
+  "include": ["switch/**/*.ts", "switch/**/*.tsx"],
+  "exclude": ["node_modules", "switch/dist"]
+}

@@ -1,8 +1,8 @@
-import { SwitchInputFieldProps } from "switch/types";
-import { Label } from "switch/components/ui/label";
-import { Input } from "switch/components/ui/input";
-import { Textarea } from "switch/components/ui/textarea";
-import { cn, widthToClassName } from "switch/lib/utils";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
+import { cn, widthToClassName } from "../../lib/utils";
+import type { SwitchInputFieldProps } from "../../types";
 import { Help } from "../help";
 
 export const SwitchTextField = ({

@@ -13,6 +13,7 @@ dist
 build 
 dist-ssr
 *.local
+switch/dist
 
 # Editor directories and files
 .vscode/*

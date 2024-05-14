@@ -1,10 +1,19 @@
 {
   "name": "@stabledata/switch",
-  "version": "0.0.0",
+  "version": "0.0.0-beta.0",
   "type": "module",
+  "main": "switch/index.ts",
+  "types": "switch/dist/types/index.d.ts",
+  "module": "switch/dist/esm/index.js",
+  "files": [
+    "switch",
+    "package.json",
+    "tsconfig.json"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsr generate && tsc && vite build && cp -r views/assets/* build/assets/",
+    "build:lib": "tsc --project tsconfig.lib.json",
     "build:node": "npm run build && rollup -c rollup.config.mjs",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "start:node": "cross-env NODE_ENV=production DEBUG=surface:* node dist/surface.server.node.js"

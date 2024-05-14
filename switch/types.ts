@@ -17,8 +17,7 @@ export type SwitchInputType =
   | "radio"
   | "switch"
   | "media"
-  | "date"
-  | "date-time";
+  | "date";
 
 export type Width =
   | "full"
