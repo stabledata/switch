@@ -15,8 +15,13 @@ export type Form<T> = UseFormReturn & {
 
 export const useForm = <T>(
   fields: SwitchInputField[],
-  onSubmit: SubmitHandler<T>
-): Form<T> => {
+  onSubmit: SubmitHandler<T>,
+  options?: { preventSSR: boolean }
+): Form<T> | undefined => {
+  if (options?.preventSSR && typeof window === "undefined") {
+    return undefined;
+  }
+
   // collect defined default values
   const defaultValues = Object.values(fields)
     .filter((field) => field.defaultValue !== undefined)
@@ -56,10 +61,10 @@ export const useInputSwitches = <T extends object>(
   form: Form<T>
 ): SwitchBoard<T> => {
   const {
-    formState: { errors },
+    formState: { errors = {} },
     watch,
     onSubmit,
-  } = form;
+  } = form ?? {};
 
   // observe changes as they happen for switches that are "realtime" enabled
   const changedState = Object.values(form.fields)

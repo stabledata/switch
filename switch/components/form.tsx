@@ -15,7 +15,7 @@ import { SwitchChoice } from "./controls/choice";
 // import { RDFTable } from "./RDFTable";
 
 export type FormProps<T> = {
-  form: Form<T>;
+  form: Form<T> | undefined;
   submitButtonLabel?: string | React.ReactNode;
   submitButtonLabelInFlight?: string | React.ReactNode;
   isInFlight?: boolean;
@@ -29,6 +29,9 @@ export function SwitchForm<T extends object>({
   isInFlight = false,
   className,
 }: FormProps<T>) {
+  if (form === undefined) {
+    return null;
+  }
   const {
     register,
     errors,
