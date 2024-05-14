@@ -18,7 +18,7 @@ function FormDemo() {
   const form = useForm(formConfig, onSubmit);
 
   return (
-    <div className="dark flex flex-col m-auto mt-10 gap-5 max-w-md ">
+    <div className="flex flex-col m-auto mt-10 gap-5 max-w-md ">
       <h3>Inputs Field "Switchboard"</h3>
       <h4>(a.k.a Form)</h4>
       <p className="text-md leading-8">

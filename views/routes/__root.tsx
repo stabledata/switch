@@ -14,7 +14,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 
 function RootComponent() {
   return (
-    <div className="background-base background-gradient min-h-[100vh] w-full pb-10 dark">
+    <div className="background-base background-gradient min-h-[100vh] w-full pb-10">
       <Header />
       <Outlet />
       <DehydrateRouter />

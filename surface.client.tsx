@@ -3,7 +3,6 @@ import { StartClient } from "@tanstack/react-router-server";
 import { createRouter } from "./surface.router";
 import { hc } from "hono/client";
 import { AppType } from "./surface.app";
-import "./views/shad.css";
 import "./views/index.css";
 
 export const rpcClient = hc<AppType>(`/`, {
