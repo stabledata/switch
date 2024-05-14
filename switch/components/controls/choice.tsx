@@ -80,18 +80,15 @@ export const SwitchChoice = ({
                     placeholder}
                 </SelectTrigger>
                 <SelectContent>
-                  {choices.map(
-                    ({ value, label: choiceLabel, group, disabled }, i) =>
-                      group ? null : (
-                        <SelectItem
-                          key={`choice-${name}-${i}`}
-                          value={value as string}
-                          disabled={disabled}
-                        >
-                          {choiceLabel}
-                        </SelectItem>
-                      )
-                  )}
+                  {choices.map(({ value, label: choiceLabel, disabled }, i) => (
+                    <SelectItem
+                      key={`choice-${name}-${i}`}
+                      value={value as string}
+                      disabled={disabled}
+                    >
+                      {choiceLabel}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             )}

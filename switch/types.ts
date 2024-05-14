@@ -73,12 +73,8 @@ export type ControlledInput = SwitchInputFieldProps & {
   control: Control<FieldValues, unknown>;
 };
 
-type Choice = {
-  value: string | number | boolean;
-  label: string;
+export type Choice = {
+  value?: string | number | boolean;
+  label?: string;
   disabled?: boolean;
-  group?: {
-    choices: Choice[]; // there is not recursive support for this yet.
-    heading: string;
-  };
 };
