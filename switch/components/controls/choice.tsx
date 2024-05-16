@@ -1,10 +1,15 @@
 import { Controller } from "react-hook-form";
-import { Label } from "../ui/label";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { cn, widthToClassName } from "../../lib/utils";
-import { Help } from "../help";
-import { Select, SelectContent, SelectItem, SelectTrigger } from "../ui/select";
-import type { ControlledInput } from "../../types";
+import { Label } from "../ui/label.js";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group.js";
+import { cn, widthToClassName } from "../../lib/utils.js";
+import { Help } from "../help.js";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+} from "../ui/select.js";
+import type { ControlledInput } from "../../types.js";
 
 export const SwitchChoice = ({
   name,

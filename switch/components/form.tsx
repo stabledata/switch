@@ -1,18 +1,18 @@
-import { Form, useInputSwitches } from "../hooks/use-form";
-import { SwitchToggle } from "./controls/toggle";
-import { SwitchTextField } from "./controls/text";
-import { Button } from "./ui/button";
-import { cn } from "../lib/utils";
-import { SwitchChoice } from "./controls/choice";
+import { Form, useInputSwitches } from "../hooks/use-form.js";
+import { SwitchToggle } from "./controls/toggle.js";
+import { SwitchTextField } from "./controls/text.js";
+import { Button } from "./ui/button.js";
+import { cn } from "../lib/utils.js";
+import { SwitchChoice } from "./controls/choice.js";
 
-// import { RDFDatePicker } from "./RDFDatePicker";
+// import { RDFDatePicker } from "./RDFDatePicker.js";
 
-// import { RDFSelect } from "./RDFSelect";
-// import { RDFRadio } from "./RDFRadios";
-// import { RDFMedia } from "./RDFMedia";
+// import { RDFSelect } from "./RDFSelect.js";
+// import { RDFRadio } from "./RDFRadios.js";
+// import { RDFMedia } from "./RDFMedia.js";
 
-// import { RDFList } from "./RDFList";
-// import { RDFTable } from "./RDFTable";
+// import { RDFList } from "./RDFList.js";
+// import { RDFTable } from "./RDFTable.js";
 
 export type FormProps<T> = {
   form: Form<T> | undefined;

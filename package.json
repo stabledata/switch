@@ -1,14 +1,16 @@
 {
   "name": "@stabledata/switch",
-  "version": "0.0.0-beta.0",
+  "version": "0.0.5",
   "type": "module",
-  "main": "switch/index.ts",
-  "types": "switch/dist/types/index.d.ts",
+  "main": "switch/dist/esm/index.js",
   "module": "switch/dist/esm/index.js",
+  "types": "switch/dist/types/index.d.ts",
   "files": [
     "switch",
+    "index.ts",
+    "types.ts",
     "package.json",
-    "tsconfig.json"
+    "README.md"
   ],
   "scripts": {
     "dev": "vite",

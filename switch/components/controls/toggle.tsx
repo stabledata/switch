@@ -1,10 +1,10 @@
 import { Controller } from "react-hook-form";
-import { Label } from "../ui/label";
-import { Checkbox } from "../ui/checkbox";
-import { Switch } from "../ui/switch";
-import type { ControlledInput } from "../../types";
-import { cn } from "../../lib/utils";
-import { Help } from "../help";
+import { Label } from "../ui/label.js";
+import { Checkbox } from "../ui/checkbox.js";
+import { Switch } from "../ui/switch.js";
+import type { ControlledInput } from "../../types.js";
+import { cn } from "../../lib/utils.js";
+import { Help } from "../help.js";
 
 export const SwitchToggle = ({
   name,

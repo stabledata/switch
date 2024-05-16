@@ -11,10 +11,7 @@
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
-    "paths": {
-      "switch/*": ["./switch/*"]
-    }
+    "jsx": "react-jsx"
   },
   "include": ["switch/**/*.ts", "switch/**/*.tsx"],
   "exclude": ["node_modules", "switch/dist"]

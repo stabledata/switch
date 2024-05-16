@@ -1,4 +1,4 @@
-import { SwitchInput } from "switch/types";
+import { SwitchInput } from "../types.js";
 
 export const Help: React.FC<{ help: SwitchInput["help"] }> = ({ help }) => {
   const { text, linkText, linkUrl } = help ?? {};

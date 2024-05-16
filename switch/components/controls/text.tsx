@@ -1,9 +1,9 @@
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { cn, widthToClassName } from "../../lib/utils";
-import type { SwitchInputFieldProps } from "../../types";
-import { Help } from "../help";
+import { Label } from "../ui/label.js";
+import { Input } from "../ui/input.js";
+import { Textarea } from "../ui/textarea.js";
+import { cn, widthToClassName } from "../../lib/utils.js";
+import type { SwitchInputFieldProps } from "../../types.js";
+import { Help } from "../help.js";
 
 export const SwitchTextField = ({
   name,

@@ -1,3 +1,3 @@
 # Switch
 
-This is basically a component library for a development tool called Stable. This library itself is open source, but for now it only ships the Typescript.
+This is a component library for a no-code tool called Stable.

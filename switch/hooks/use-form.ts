@@ -4,7 +4,7 @@ import {
   UseFormReturn,
   useForm as useRHF,
 } from "react-hook-form";
-import { SwitchInputField } from "../types";
+import { SwitchInputField } from "../types.js";
 
 export type SubmitHandler<T> = (fd: FormData, state: T) => void | Promise<void>;
 
