@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Github, Moon, RefreshCw, Sun } from "lucide-react";
 import { useBusyRouter } from "./hooks/use-busy-router";
-import { useDarkMode } from "switch/dark-mode-provider";
+import { useDarkMode } from "switch/theme/dark-mode-provider";
 
 const activeProps = {
   className: "underline",

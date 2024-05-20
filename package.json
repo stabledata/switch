@@ -1,6 +1,6 @@
 {
   "name": "@stabledata/switch",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "type": "module",
   "main": "switch/dist/esm/index.js",
   "module": "switch/dist/esm/index.js",
@@ -12,10 +12,17 @@
     "package.json",
     "README.md"
   ],
+  "exports": {
+    ".": {
+      "import": "./switch/dist/esm/index.js"
+    },
+    "./switch.css": "./switch/dist/switch.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsr generate && tsc && vite build && cp -r views/assets/* build/assets/",
-    "build:lib": "tsc --project tsconfig.lib.json",
+    "build:css": "npx tailwindcss -i ./views/index.css -o ./switch/dist/switch.css --minify",
+    "build:lib": "tsc --project tsconfig.lib.json && bun run build:css",
     "build:node": "npm run build && rollup -c rollup.config.mjs",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "start:node": "cross-env NODE_ENV=production DEBUG=surface:* node dist/surface.server.node.js"

@@ -19,11 +19,6 @@ h3 {
   @apply text-2xl;
 }
 
-a {
-  @apply text-gray-700 transition-colors duration-300 ease-out;
-  font-weight: 600;
-}
-
 a:hover {
   @apply text-gray-600;
 }
@@ -55,10 +50,6 @@ body.dark {
 
 .dark .header {
   @apply border-b-gray-500;
-}
-
-.dark a {
-  @apply text-gray-300 transition-colors duration-300 ease-out;
 }
 
 .dark a:hover {
