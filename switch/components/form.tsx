@@ -15,7 +15,7 @@ import { SwitchChoice } from "./controls/choice.js";
 // import { RDFTable } from "./RDFTable.js";
 
 export type FormProps<T> = {
-  form: Form<T> | undefined;
+  form: Form<T>;
   submitButtonLabel?: string | React.ReactNode;
   submitButtonLabelInFlight?: string | React.ReactNode;
   isInFlight?: boolean;
@@ -29,19 +29,18 @@ export function SwitchForm<T extends object>({
   isInFlight = false,
   className,
 }: FormProps<T>) {
-  if (form === undefined) {
-    return null;
-  }
   const {
     register,
     errors,
-    changedState,
+    // changedState,
     control,
     handleSubmit: rhfSubmitHandler,
     handleSubmitWithFormData,
   } = useInputSwitches<T>(form);
 
-  console.log(changedState);
+  // TODO: send back changes to handler...
+  // config a debounce?
+  // console.log(changedState);
 
   return (
     <form

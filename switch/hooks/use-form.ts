@@ -15,13 +15,8 @@ export type Form<T> = UseFormReturn & {
 
 export const useForm = <T>(
   fields: SwitchInputField[],
-  onSubmit: SubmitHandler<T>,
-  options?: { preventSSR: boolean }
-): Form<T> | undefined => {
-  if (options?.preventSSR && typeof window === "undefined") {
-    return undefined;
-  }
-
+  onSubmit: SubmitHandler<T>
+): Form<T> => {
   // collect defined default values
   const defaultValues = Object.values(fields)
     .filter((field) => field.defaultValue !== undefined)

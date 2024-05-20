@@ -6,7 +6,7 @@
     @media (prefers-color-scheme: dark) { :root { --tone: rgb(200, 200, 200); } }
   </style>
   </defs>
-  <rect x="-0.051" y="121.144" width="52.712" height="52.415" style="fill: none; stroke-linejoin: round; stroke: rgb(0, 0, 0); stroke-width: 5px;" rx="77.596" ry="77.596"/>
-  <rect x="5.534" y="14.669" width="46.968" height="3.796" style="stroke-width: 4px; fill: none; stroke: rgb(0, 0, 0); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(-0.897298, -0.441426, 0.441426, -0.897298, -1.228085, 128.41283)"/>
-  <rect x="3.496" y="26.896" width="29.665" height="6.957" style="stroke-width: 4px; fill: none; stroke: rgb(0, 0, 0); transform-origin: 18.328px 30.38px;" transform="matrix(-0.915424, 0.402492, -0.402492, -0.915424, 3.901587, 126.446978)"/>
+  <rect x="-0.051" y="121.144" width="52.712" height="52.415" style="fill: none; stroke-linejoin: round; stroke: var(--tone); stroke-width: 5px;" rx="77.596" ry="77.596"/>
+  <rect x="5.534" y="14.669" width="46.968" height="3.796" style="stroke-width: 4px; fill: none; stroke: var(--tone); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(-0.897298, -0.441426, 0.441426, -0.897298, -1.228085, 128.41283)"/>
+  <rect x="3.496" y="26.896" width="29.665" height="6.957" style="stroke-width: 4px; fill: none; stroke: var(--tone); transform-origin: 18.328px 30.38px;" transform="matrix(-0.915424, 0.402492, -0.402492, -0.915424, 3.901587, 126.446978)"/>
 </svg>
