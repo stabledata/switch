@@ -1,6 +1,6 @@
 {
   "name": "@stabledata/switch",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "type": "module",
   "main": "switch/dist/esm/index.js",
   "module": "switch/dist/esm/index.js",
@@ -14,7 +14,8 @@
   ],
   "exports": {
     ".": {
-      "import": "./switch/dist/esm/index.js"
+      "import": "./switch/dist/esm/index.js",
+      "types": "./switch/dist/types/index.d.ts"
     },
     "./switch.css": "./switch/dist/switch.css"
   },
