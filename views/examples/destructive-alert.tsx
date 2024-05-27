@@ -27,9 +27,7 @@ export function AlertDialogDemo() {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction className="bg-red-600 dark:bg-red-700 hover:bg-red-600/95 dark:hover:bg-red-500/85 dark:text-neutral-100">
-            Continue
-          </AlertDialogAction>
+          <AlertDialogAction>Continue</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

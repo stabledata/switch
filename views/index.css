@@ -27,7 +27,7 @@ a:hover {
   background-position: -150% 0;
   background-image: radial-gradient(
     at top center,
-    rgba(254, 254, 240, 1) 0%,
+    rgb(244, 244, 244) 0%,
     rgba(255, 255, 255, 1) 100%
   );
 }
@@ -66,7 +66,16 @@ body.dark {
 .dark .background-gradient {
   background-image: radial-gradient(
     at top center,
-    rgb(46, 46, 44) 0%,
-    rgb(23, 23, 23) 100%
+    rgb(26, 26, 25) 0%,
+    rgb(0, 0, 0) 100%
   );
+}
+
+:root {
+  --destructive-bg: #d03c3f;
+  --destructive-text: #fff;
+}
+
+.dark {
+  --destructive-bg: #b01b1d;
 }

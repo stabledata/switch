@@ -2,7 +2,8 @@ import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
 import { DehydrateRouter } from "@tanstack/react-router-server/client";
 import type { RouterContext } from "../../surface.router";
 import { Header } from "../header";
-import { DarkModeProvider } from "switch/dark-mode-provider";
+import { DarkModeProvider } from "../../switch/theme/dark-mode-provider";
+import { Toaster } from "../../switch/components/ui/toaster";
 
 export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootComponent,
@@ -20,6 +21,7 @@ function RootComponent() {
         <Header />
         <Outlet />
         <DehydrateRouter />
+        <Toaster />
       </div>
     </DarkModeProvider>
   );

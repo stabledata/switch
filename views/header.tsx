@@ -17,7 +17,7 @@ export function Header() {
       </Link>
 
       <Link
-        to="/components"
+        to="/story"
         activeProps={activeProps}
         activeOptions={{ exact: true }}
       >

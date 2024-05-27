@@ -18,6 +18,12 @@ module.exports = {
       },
     },
     extend: {
+      backgroundColor: {
+        destructive: "var(--destructive-bg)",
+      },
+      colors: {
+        "destructive-foreground": "var(--destructive-text)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
