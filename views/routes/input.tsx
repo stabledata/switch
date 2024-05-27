@@ -14,18 +14,28 @@ RegExp.prototype.toJSON = RegExp.prototype.toString;
 
 function FormDemo() {
   const [result, setResult] = React.useState<object | null>(null);
-  // tip- you can type the form results useForm takes a generic.
+  const [useRealtime, setUseRealtime] = React.useState<boolean>(false);
   const onSubmit = (_fd: FormData, s: object) => {
     setResult(s);
   };
 
-  const form = useForm(formConfig, onSubmit);
+  const handleRealtimeChanges = (data: object) => {
+    console.log("Realtime updates", data);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if ((data as any).realtime) {
+      setUseRealtime(true);
+      return;
+    }
+    setUseRealtime(false);
+  };
+
+  const form = useForm({ fields: formConfig, onSubmit, realtime: useRealtime });
 
   return (
     <div className="container mx-auto px-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20">
         <div className="flex flex-col gap-4 py-6 text-right">
-          <h3>Inputs Field "Switchboard"</h3>
+          <h1>Inputs Field "Switchboard"</h1>
           <h4>a.k.a Form</h4>
           <p className="text-md leading-8">
             Forms are configured using serializable data structures.
@@ -129,9 +139,15 @@ export type SwitchInputField = {
         </div>
 
         <div className="flex flex-col py-6 gap-4">
-          <h3>Inputs Preview</h3>
-          <h4>Try me! Fill out some fields</h4>
-          <SwitchForm form={form} className="mb-5" />
+          <h1>Preview</h1>
+          <h4>
+            Try me! Fill out the fields. Also check the console for updates.
+          </h4>
+          <SwitchForm
+            form={form}
+            onChange={handleRealtimeChanges}
+            className="mb-5"
+          />
           {result ? (
             <pre className="text-sm w-full">
               {JSON.stringify(result, null, 2)}

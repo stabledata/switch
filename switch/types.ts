@@ -40,7 +40,7 @@ export type SwitchInputField = {
   // type" here... possibly.
   defaultValue?: string | number | boolean;
   label?: string;
-  realtime?: boolean; // TBD - probably call it "realtime"
+  realtime?: boolean;
   placeholder?: string;
   help?: {
     text?: string;

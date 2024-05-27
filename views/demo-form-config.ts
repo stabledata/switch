@@ -1,6 +1,16 @@
 import { SwitchInput } from "switch/types";
 
 export const formConfig: SwitchInput[] = [
+  {
+    type: "switch",
+    name: "realtime",
+    label: "Realtime Form",
+    help: {
+      text: "Makes the entire form reactive to changes in the fields. When this is turned off, only realtime:true fields will be watched for in the onChange callback.",
+    },
+    defaultValue: false,
+    realtime: true,
+  },
   // simple as it gets!
   {
     type: "text",
@@ -30,6 +40,10 @@ export const formConfig: SwitchInput[] = [
       required: "This field is required, fill it out!",
       // validate:  // DO NOT DO THIS! Functions are not serializable.
     },
+    help: {
+      text: "Note, this is a 'realtime' field, so it will log to the console on change",
+    },
+    realtime: true,
   },
   {
     type: "password",

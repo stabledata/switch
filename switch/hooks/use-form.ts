@@ -8,15 +8,16 @@ import { SwitchInputField } from "../types.js";
 
 export type SubmitHandler<T> = (fd: FormData, state: T) => void | Promise<void>;
 
-export type Form<T> = UseFormReturn & {
+export type Form<T> = {
   fields: SwitchInputField[];
   onSubmit: SubmitHandler<T>;
+  realtime?: boolean;
 };
 
-export const useForm = <T>(
-  fields: SwitchInputField[],
-  onSubmit: SubmitHandler<T>
-): Form<T> => {
+export type SwitchBoardForm<T> = UseFormReturn & Form<T>;
+
+export const useForm = <T>(form: Form<T>): SwitchBoardForm<T> => {
+  const { fields, onSubmit } = form;
   // collect defined default values
   const defaultValues = Object.values(fields)
     .filter((field) => field.defaultValue !== undefined)
@@ -33,9 +34,10 @@ export const useForm = <T>(
     );
 
   // non-string defaults need to be serialized
-  const form = useRHF({ defaultValues });
+  const rhf = useRHF({ defaultValues });
 
   return {
+    ...rhf,
     ...form,
     fields,
     onSubmit,
@@ -53,17 +55,19 @@ export type SwitchBoard<T> = UseFormReturn & {
 // most part they are already exposed and could probably just be used
 // directly there - this was legacy from RDF days, just cleaned up a bit
 export const useInputSwitches = <T extends object>(
-  form: Form<T>
+  form: SwitchBoardForm<T>
 ): SwitchBoard<T> => {
   const {
     formState: { errors = {} },
     watch,
     onSubmit,
+    realtime,
   } = form ?? {};
 
   // observe changes as they happen for switches that are "realtime" enabled
   const changedState = Object.values(form.fields)
-    .filter((field: SwitchInputField) => field.realtime)
+    // fields can be realtime, or the whole form can be as well
+    .filter((field: SwitchInputField) => field.realtime || realtime)
     .map((field: SwitchInputField) => ({
       name: field.name,
       value: watch(field.name),

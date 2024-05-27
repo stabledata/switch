@@ -1,9 +1,10 @@
-import { Form, useInputSwitches } from "../hooks/use-form.js";
+import { SwitchBoardForm, useInputSwitches } from "../hooks/use-form.js";
 import { SwitchToggle } from "./controls/toggle.js";
 import { SwitchTextField } from "./controls/text.js";
 import { Button } from "./ui/button.js";
 import { cn } from "../lib/utils.js";
 import { SwitchChoice } from "./controls/choice.js";
+import React from "react";
 
 // import { RDFDatePicker } from "./RDFDatePicker.js";
 
@@ -15,7 +16,8 @@ import { SwitchChoice } from "./controls/choice.js";
 // import { RDFTable } from "./RDFTable.js";
 
 export type FormProps<T> = {
-  form: Form<T>;
+  form: SwitchBoardForm<T>;
+  onChange?: (data: Partial<T>) => void;
   submitButtonLabel?: string | React.ReactNode;
   submitButtonLabelInFlight?: string | React.ReactNode;
   isInFlight?: boolean;
@@ -24,6 +26,7 @@ export type FormProps<T> = {
 
 export function SwitchForm<T extends object>({
   form,
+  onChange,
   submitButtonLabel = "Send it",
   submitButtonLabelInFlight = "Sending...",
   isInFlight = false,
@@ -32,15 +35,17 @@ export function SwitchForm<T extends object>({
   const {
     register,
     errors,
-    // changedState,
+    changedState,
     control,
     handleSubmit: rhfSubmitHandler,
     handleSubmitWithFormData,
   } = useInputSwitches<T>(form);
 
-  // TODO: send back changes to handler...
-  // config a debounce?
-  // console.log(changedState);
+  React.useEffect(() => {
+    if (changedState && onChange !== undefined) {
+      onChange(changedState);
+    }
+  }, [changedState, onChange]);
 
   return (
     <form
