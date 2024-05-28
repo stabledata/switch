@@ -2,9 +2,9 @@ import {
   AnyRouter,
   createRouter as tanStackCreateRouter,
 } from "@tanstack/react-router";
-import { routeTree } from "./.routes.tree";
-import { inflateState } from "./state/registry";
-import { rpcClient } from "./surface.client";
+import { routeTree } from './.routes.tree.js';
+import { inflateState } from './state/registry.js';
+import { rpcClient } from './surface.client.js';
 
 export type RouterContext = {
   rpc?: typeof rpcClient;

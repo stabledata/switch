@@ -1,5 +1,5 @@
 import pino from "pino";
-import { env, isDev } from "../env";
+import { env, isDev } from '../env.js';
 
 const level = env("LOG_LEVEL") ?? "info";
 

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Github, Moon, RefreshCw, Sun } from "lucide-react";
-import { useBusyRouter } from "./hooks/use-busy-router";
+import { useBusyRouter } from './hooks/use-busy-router.js';
 import { useDarkMode } from "switch/theme/dark-mode-provider";
 
 const activeProps = {

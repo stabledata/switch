@@ -1,7 +1,7 @@
 import { expect, it, mock } from "bun:test";
 
-import { pingRouteHandler as app } from "../handlers/ping.handler";
-import { logger } from "../logger/logger";
+import { pingRouteHandler as app } from '../handlers/ping.handler.js';
+import { logger } from '../logger/logger.js';
 
 it("pings", async () => {
   const mockLogger = {

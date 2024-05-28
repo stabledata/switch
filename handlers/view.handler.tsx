@@ -7,11 +7,11 @@ import {
   createHandlers,
   Dependencies,
   SurfaceContext,
-} from "../surface.app.ctx";
-import { loadState } from "../state/registry";
+} from '../surface.app.ctx.js';
+import { loadState } from '../state/registry.js';
 import { hc } from "hono/client";
-import { AppType } from "../surface.app";
-import { createRouter } from "../surface.router";
+import { AppType } from '../surface.app.js';
+import { createRouter } from '../surface.router.js';
 import { Hono } from "hono";
 
 async function render(c: SurfaceContext) {

@@ -1,6 +1,6 @@
 import { Hono } from "hono";
-import { createHandlers, applyContext, Dependencies } from "../surface.app.ctx";
-import { errorHandler } from "./error.handlers";
+import { createHandlers, applyContext, Dependencies } from '../surface.app.ctx.js';
+import { errorHandler } from './error.handlers.js';
 
 export class PingError extends Error {}
 

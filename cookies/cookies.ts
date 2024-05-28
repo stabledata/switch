@@ -1,6 +1,6 @@
 import { getCookie, setCookie } from "hono/cookie";
 import { CookieOptions } from "hono/utils/cookie";
-import { SurfaceContext } from "../surface.app.ctx";
+import { SurfaceContext } from '../surface.app.ctx.js';
 
 export function cookies(c: SurfaceContext) {
   const get = (name: string) => {

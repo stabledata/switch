@@ -1,5 +1,5 @@
 import { serveStatic } from "@hono/node-server/serve-static";
-import { Dependencies } from "../surface.app.ctx";
+import { Dependencies } from '../surface.app.ctx.js';
 
 export function handleStaticAssets({ logger }: Partial<Dependencies>) {
   const isProd = process.env["NODE_ENV"] === "production";

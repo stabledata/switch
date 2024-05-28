@@ -5,7 +5,7 @@ import {
   ToastProvider,
   ToastTitle,
   ToastViewport,
-} from "./toast";
+} from './toast.js';
 import { useToast } from "./use-toast.js";
 
 export function Toaster() {

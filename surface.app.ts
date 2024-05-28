@@ -1,10 +1,10 @@
 import { Hono } from "hono";
-import type { Dependencies } from "./surface.app.ctx";
+import type { Dependencies } from './surface.app.ctx.js';
 
-import { handleStaticAssets } from "./handlers/assets.service";
-import { pingRouteHandler } from "./handlers/ping.handler";
-import { viewRouteHandler } from "./handlers/view.handler";
-import { errorHandler } from "./handlers/error.handlers";
+import { handleStaticAssets } from './handlers/assets.service.js';
+import { pingRouteHandler } from './handlers/ping.handler.js';
+import { viewRouteHandler } from './handlers/view.handler.js';
+import { errorHandler } from './handlers/error.handlers.js';
 
 import dotenv from "dotenv";
 dotenv.config();

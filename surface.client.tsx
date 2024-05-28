@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom/client";
 import { StartClient } from "@tanstack/react-router-server";
-import { createRouter } from "./surface.router";
+import { createRouter } from './surface.router.js';
 import { hc } from "hono/client";
-import { AppType } from "./surface.app";
+import { AppType } from './surface.app.js';
 import "./views/index.css";
 
 export const rpcClient = hc<AppType>(`/`, {

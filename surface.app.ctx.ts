@@ -1,8 +1,8 @@
 import { hc } from "hono/client";
 import { createFactory } from "hono/factory";
 import { decode, sign, verify } from "hono/jwt";
-import { cookies } from "./cookies/cookies";
-import { logger } from "./logger/logger";
+import { cookies } from './cookies/cookies.js';
+import { logger } from './logger/logger.js';
 
 import { Context } from "hono";
 

@@ -1,5 +1,5 @@
-import { SurfaceContext } from "../surface.app.ctx";
-import { RouterContext } from "../surface.router";
+import { SurfaceContext } from '../surface.app.ctx.js';
+import { RouterContext } from '../surface.router.js';
 
 type PropertyOfContext = RouterContext[keyof RouterContext];
 

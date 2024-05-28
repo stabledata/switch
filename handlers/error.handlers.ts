@@ -1,7 +1,7 @@
 import hono from "hono";
-import { PingError } from "./ping.handler";
-import { logger } from "../logger/logger";
-import { Dependencies } from "../surface.app.ctx";
+import { PingError } from './ping.handler.js';
+import { logger } from '../logger/logger.js';
+import { Dependencies } from '../surface.app.ctx.js';
 
 export const errorHandler =
   (injections: Partial<Dependencies>): hono.ErrorHandler =>

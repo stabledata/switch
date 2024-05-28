@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { formConfig } from "../demo-form-config";
+import { formConfig } from '../demo-form-config.js';
 import { SwitchForm } from "switch/components/form";
 import { useForm } from "switch/hooks/use-form";
 import React from "react";
