@@ -16,7 +16,7 @@ import { Button } from "./ui/button.js";
 export type DialogProps = {
   dialog: SwitchDialog;
   open: boolean;
-  onAction: (id: string | null) => void; // TODO: resolve something more bad ass?
+  onAction: (id: string | null) => void;
 };
 
 export const Dialog: React.FC<DialogProps> = ({ dialog, onAction }) => {
