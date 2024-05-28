@@ -5,6 +5,7 @@ import type {
   FieldErrors,
   Control,
 } from "react-hook-form";
+import { ButtonProps } from "./components/ui/button.js";
 
 export type SwitchInputType =
   | "text"
@@ -77,3 +78,16 @@ export type Choice = {
   label?: string;
   disabled?: boolean;
 };
+
+export type SwitchDialog = {
+  title: string;
+  message: string;
+  actions: SwitchDialogAction[];
+  trigger: React.ReactNode | string;
+};
+
+export type SwitchDialogAction = {
+  label: string;
+  id: string;
+  destructive?: boolean;
+} & Pick<ButtonProps, "disabled">; // TODO: maybe we want to grab more here

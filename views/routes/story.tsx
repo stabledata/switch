@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "switch/index";
-import { AlertDialogDemo } from "../examples/destructive-alert";
 import { useToast } from "switch/components/ui/use-toast";
 import { ToastAction } from "switch/components/ui/toast";
+import { useDialog } from "switch/hooks/use-dialog";
 
 export const Route = createFileRoute("/story")({
   component: GhettoStorybook,
@@ -11,6 +11,34 @@ export const Route = createFileRoute("/story")({
 export function GhettoStorybook() {
   // const [openDialog, setOpenDialog] = React.useState(false);
   const { toast } = useToast();
+
+  const { DialogComponent } = useDialog({
+    onAction: async (id: string | null) => {
+      console.log("resolved action", id);
+    },
+  });
+  const { DialogComponent: DangerousDialogComponent } = useDialog({
+    onAction: async (id: string | null) => {
+      console.log("danger choice action", id);
+    },
+
+    options: {
+      trigger: <Button variant="destructive">Blow it up</Button>,
+      title: "Oh no!",
+      message: "Are you sure you want to blow it up?",
+      actions: [
+        {
+          id: "cancel",
+          label: "No. I am a coward",
+        },
+        {
+          id: "blow-it-up",
+          label: "Yes. I am Danger",
+          destructive: true,
+        },
+      ],
+    },
+  });
 
   return (
     <div className="flex flex-col gap-5 max-w-lg m-auto mt-10">
@@ -36,8 +64,9 @@ export function GhettoStorybook() {
       <Button variant="ghost">Ghost</Button>
       <Button variant="destructive">Destroy</Button>
       <hr />
-      <h3>Dialog</h3>
-      <AlertDialogDemo />
+      <h3>Dialogs</h3>
+      <DialogComponent />
+      <DangerousDialogComponent />
       <h3>Toaster</h3>
       <Button
         variant="default"
