@@ -1,4 +1,4 @@
-import { cn } from "switch/lib/utils.js";
+import { cn } from "../lib/utils.js";
 import type { SwitchDialog } from "../types.js";
 import {
   AlertDialog,
