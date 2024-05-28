@@ -10,7 +10,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "./ui/alert-dialog";
+} from "./ui/alert-dialog.js";
 import { Button } from "./ui/button.js";
 
 export type DialogProps = {
