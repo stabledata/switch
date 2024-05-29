@@ -1,4 +1,4 @@
-name: Surface Demo CICD
+name: Switch Demo CICD
 on:
   push:
     branches:
