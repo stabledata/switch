@@ -37,7 +37,7 @@ jobs:
       - name: "Push to AR"
         run: |
           docker build . \
-            -f Dockerfile.bun \
+            -f Dockerfile.node \
             -t ${{ secrets.GCP_AR_PATH }}/app:${GITHUB_SHA::6} \
             -t ${{ secrets.GCP_AR_PATH }}/app:latest
           docker push ${{ secrets.GCP_AR_PATH }}/app:${GITHUB_SHA::6}
@@ -57,7 +57,7 @@ jobs:
       - name: "Deploy"
         if:
         run: |
-          echo "DEBUG: surface:*" >> env.yaml
+          echo "LOG_LEVEL: error" >> env.yaml
           echo "SELF_RPC_HOST: https://surface-demo-app-5v6fvk5ela-uw.a.run.app/" >> env.yaml
           gcloud run deploy switch-demo-app \
             --image "${{ secrets.GCP_AR_PATH }}/app:${GITHUB_SHA::6}" \
