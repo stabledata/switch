@@ -1,13 +1,15 @@
-<svg viewBox="-3.4 118.14 59.411 59.036" width="52.7122" height="52.415" xmlns="http://www.w3.org/2000/svg">
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="-0.051 121.144 52.712 52.415" width="52.712" height="52.415" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
     :root { --tone: rgb(20, 20, 20); }
     @media (prefers-color-scheme: dark) { :root { --tone: rgb(200, 200, 200); } }
   </style>
   </defs>
-  <rect x="-0.051" y="121.144" width="52.712" height="52.415" style="fill: none; stroke-linejoin: round; stroke: var(--tone); stroke-width: 5px;" rx="77.596" ry="77.596"></rect>
-  <rect x="-50.622" y="-150.772" width="46.968" height="3.796" style="stroke-width: 4px; fill: none; stroke: var(--tone); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(-1, 0, 0, -1, 54.276005, 297.748011)"></rect>
-  <rect x="-18.549" y="-81.46" width="16.419" height="2.17" style="stroke-width: 4px; fill: none; stroke: var(--tone); transform-origin: -10.339px -80.375px;" transform="matrix(0, -1, 1, 0, 42.203186, 236.235092)"></rect>
-  <rect x="-18.549" y="-142.53" width="16.419" height="3.796" style="stroke-width: 4px; fill: none; stroke: var(--tone); transform-origin: -10.339px -140.632px;" transform="matrix(0, -1, 1, 0, 36.449539, 279.845139)"></rect>
-  <rect x="-18.549" y="-81.46" width="16.419" height="2.17" style="stroke-width: 4px; fill: none; stroke: var(--tone); transform-origin: -10.339px -80.375px;" transform="matrix(0, -1, 1, 0, 30.414825, 236.351349)"></rect>
+  <rect x="-0.051" y="121.144" width="52.712" height="52.415" style="fill: none; stroke-linejoin: round; stroke: var(--tone); stroke-width: 5px;" rx="77.596" ry="77.596" transform="matrix(1, 0, 0, 1, -7.105427357601002e-15, 0)"/>
+  <rect x="-20.248" y="-150.772" width="16.594" height="3.058" style="stroke-width: 4px; fill: none; stroke: var(--tone); transform-origin: -11.951px -149.243px;" transform="matrix(-1, 0, 0, -1, 23.901998519898, 298.485992431643)"/>
+  <rect x="-14.737" y="-147.714" width="13.045" height="3.934" style="stroke-width: 4px; fill: none; stroke: var(--tone); transform-origin: -8.214px -145.747px;" transform="matrix(0, -1, 1, 0, 34.635192871093, 282.966094970703)"/>
+  <rect x="-15.316" y="-81.46" width="13.557" height="2.17" style="stroke-width: 4px; fill: none; stroke: var(--tone); transform-origin: -8.537px -80.375px;" transform="matrix(0, -1, 1, 0, 27.989807128906, 234.926879882812)"/>
+  <rect x="-50.498" y="-150.752" width="16.594" height="3.058" style="stroke-width: 4px; fill: none; stroke: var(--tone); transform-origin: -42.201px -149.223px;" transform="matrix(-1, 0, 0, -1, 84.402046203616, 298.446899414133)"/>
+  <rect x="-15.316" y="-81.46" width="13.557" height="2.17" style="stroke-width: 4px; fill: none; stroke: var(--tone); transform-origin: -8.537px -80.375px;" transform="matrix(0, -1, 1, 0, 42.031913757324, 234.822891235349)"/>
 </svg>
