@@ -39,13 +39,17 @@ export function Dialog<DP>({ dialog, onAction, ...rest }: DialogProps<DP>) {
             switch (action.id) {
               case "cancel":
                 return (
-                  <AlertDialogCancel onClick={() => onAction(null, rest as DP)}>
+                  <AlertDialogCancel
+                    key={action.id}
+                    onClick={() => onAction(null, rest as DP)}
+                  >
                     {action.label}
                   </AlertDialogCancel>
                 );
               default:
                 return (
                   <AlertDialogAction
+                    key={action.id}
                     disabled={action.disabled}
                     onClick={() => onAction(action.id, rest as DP)}
                     className={cn(
