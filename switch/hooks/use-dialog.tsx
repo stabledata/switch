@@ -2,21 +2,24 @@ import React from "react";
 import { Dialog, DialogProps } from "../components/dialog.js";
 import { SwitchDialog } from "../types.js";
 
-type UseDialogResult = {
-  DialogComponent: React.FC;
+type UseDialogResult<DialogComponentProps> = {
+  DialogComponent: React.FC<DialogComponentProps>;
 };
 
-type UseDialogOptions = {
-  onAction: (id: string | null) => void;
+export type UseDialogOptions = {
+  onAction: <DialogComponentProps>(
+    action: string | null,
+    props: DialogComponentProps
+  ) => void;
   options?: Partial<SwitchDialog>;
   CustomDialog?: React.FC<DialogProps>;
 };
 
-export function useDialog({
+export function useDialog<DialogComponentProps>({
   CustomDialog,
   options,
   onAction,
-}: UseDialogOptions): UseDialogResult {
+}: UseDialogOptions): UseDialogResult<DialogComponentProps> {
   const defaultDialog: SwitchDialog = React.useMemo(
     () => ({
       title: "Are you sure?",
@@ -41,11 +44,12 @@ export function useDialog({
   const Component = CustomDialog || Dialog;
 
   return {
-    DialogComponent: () => (
+    DialogComponent: (props?: DialogComponentProps) => (
       <Component
         dialog={{ ...defaultDialog, ...options } as SwitchDialog}
         onAction={onAction}
         open={false}
+        {...props}
       />
     ),
   };

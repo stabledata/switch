@@ -17,6 +17,19 @@ export function GhettoStorybook() {
       console.log("resolved action", id);
     },
   });
+
+  const { DialogComponent: DialogWithProps } = useDialog<{
+    foo: string;
+    bar: number;
+  }>({
+    onAction: async (id: string | null, props) => {
+      console.log("resolved action w props", id, props);
+    },
+    options: {
+      trigger: "Trigger with props",
+    },
+  });
+
   const { DialogComponent: DangerousDialogComponent } = useDialog({
     onAction: async (id: string | null) => {
       console.log("danger choice action", id);
@@ -66,6 +79,7 @@ export function GhettoStorybook() {
       <hr />
       <h3>Dialogs</h3>
       <DialogComponent />
+      <DialogWithProps foo="bar" bar={10} />
       <DangerousDialogComponent />
       <h3>Toaster</h3>
       <Button
