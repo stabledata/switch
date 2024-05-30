@@ -18,12 +18,13 @@ export function GhettoStorybook() {
     },
   });
 
-  const { DialogComponent: DialogWithProps } = useDialog<{
+  type Dp = {
     foo: string;
     bar: number;
-  }>({
-    onAction: async (id: string | null, props) => {
-      console.log("resolved action w props", id, props);
+  };
+  const { DialogComponent: DialogWithProps } = useDialog<Dp>({
+    onAction: async (_: string | null, props) => {
+      console.log("resolved action w props:", props.foo, props.bar);
     },
     options: {
       trigger: "Trigger with props",
