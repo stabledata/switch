@@ -1,15 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import { Github, Moon, RefreshCw, Sun } from "lucide-react";
-import { useBusyRouter } from './hooks/use-busy-router.js';
+import { useBusyRouter } from "./hooks/use-busy-router.js";
 import { useDarkMode } from "switch/theme/dark-mode-provider";
+import { TooltipWrapper } from "switch/components/ui/tooltip";
+import { BinaryIconToggle } from "switch/index";
 
 const activeProps = {
-  className: "underline",
+  className: "underline font-medium",
 };
 
 export function Header() {
   const isLoading = useBusyRouter();
   const { mode, setDarkMode } = useDarkMode();
+  const switchTooltip =
+    mode === "dark" ? "Switch to light mode" : "Switch to dark mode";
   return (
     <div className="header">
       <Link to="/" activeProps={activeProps} activeOptions={{ exact: true }}>
@@ -36,15 +40,19 @@ export function Header() {
       {isLoading ? (
         <RefreshCw size={20} className="absolute right-4 animate-spin" />
       ) : null}
-      {mode === "dark" ? (
-        <a href="#" onClick={() => setDarkMode("light")}>
-          <Sun />
-        </a>
-      ) : (
-        <a href="#" onClick={() => setDarkMode("dark")}>
-          <Moon />
-        </a>
-      )}
+
+      <TooltipWrapper content={switchTooltip}>
+        <BinaryIconToggle
+          variant="ghost"
+          className="w-8"
+          onIcon={<Moon />}
+          offIcon={<Sun />}
+          value={mode === "dark" ? "on" : "off"}
+          onSwitch={(state: "off" | "on") => {
+            setDarkMode(state === "on" ? "dark" : "light");
+          }}
+        />
+      </TooltipWrapper>
     </div>
   );
 }

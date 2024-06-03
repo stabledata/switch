@@ -19,10 +19,6 @@ h3 {
   @apply text-2xl;
 }
 
-a:hover {
-  @apply text-gray-600;
-}
-
 .background-gradient {
   background-position: -150% 0;
   background-image: radial-gradient(
@@ -50,10 +46,6 @@ body.dark {
 
 .dark .header {
   @apply border-b-gray-500;
-}
-
-.dark a:hover {
-  @apply text-gray-400;
 }
 
 .dark .background-base {

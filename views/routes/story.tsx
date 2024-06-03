@@ -3,6 +3,16 @@ import { Button } from "switch/index";
 import { useToast } from "switch/components/ui/use-toast";
 import { ToastAction } from "switch/components/ui/toast";
 import { useDialog } from "switch/hooks/use-dialog";
+import { BinaryIconToggle } from "switch/components/ui/binary-icon-toggle";
+import { Moon, Power, PowerOff, Sun } from "lucide-react";
+import React from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipWrapper,
+  TooltipTrigger,
+} from "switch/components/ui/tooltip";
 
 export const Route = createFileRoute("/story")({
   component: GhettoStorybook,
@@ -11,7 +21,7 @@ export const Route = createFileRoute("/story")({
 export function GhettoStorybook() {
   // const [openDialog, setOpenDialog] = React.useState(false);
   const { toast } = useToast();
-
+  const [toggleButton, setToggleButton] = React.useState<"on" | "off">("off");
   const { DialogComponent } = useDialog({
     onAction: async (id: string | null) => {
       console.log("resolved action", id);
@@ -77,6 +87,38 @@ export function GhettoStorybook() {
       <Button variant="outline">Outline</Button>
       <Button variant="ghost">Ghost</Button>
       <Button variant="destructive">Destroy</Button>
+
+      <p>Binary Icon Switch ({toggleButton})</p>
+      <BinaryIconToggle
+        onIcon={<Sun />}
+        offIcon={<Moon />}
+        value={toggleButton}
+        onSwitch={(state: "off" | "on") => setToggleButton(state)}
+      />
+
+      <p>With Tooltip</p>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <BinaryIconToggle
+              onIcon={<Power size={20} />}
+              offIcon={<PowerOff size={20} />}
+              value={toggleButton}
+              onSwitch={(state: "off" | "on") => setToggleButton(state)}
+              className="w-10"
+            />
+          </TooltipTrigger>
+          <TooltipContent side="bottom">
+            <p>
+              {toggleButton === "off" ? "Turn the power on" : "Shut it down "}
+            </p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+      <p>Wrapper tooltip</p>
+      <TooltipWrapper content="This is a tooltip">
+        <Button variant="default">Hover me</Button>
+      </TooltipWrapper>
       <hr />
       <h3>Dialogs</h3>
       <DialogComponent />
