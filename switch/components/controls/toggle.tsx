@@ -46,7 +46,7 @@ export const SwitchToggle = ({
                   id={name}
                   disabled={disabled}
                   checked={field.value}
-                  onCheckedChange={field.onChange}
+                  onCheckedChange={(v) => field.onChange(!!v)}
                 />
               </div>
             ) : (
@@ -55,7 +55,7 @@ export const SwitchToggle = ({
                   id={name}
                   disabled={disabled}
                   checked={field.value}
-                  onCheckedChange={field.onChange}
+                  onCheckedChange={(v) => field.onChange(!!v)}
                 />
                 <div className="flex flex-col w-full gap-2 justify-start">
                   <Label

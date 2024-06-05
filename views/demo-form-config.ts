@@ -197,6 +197,7 @@ export const formConfig: SwitchInput[] = [
     type: "switch",
     name: "data-enabled",
     label: "Enable cellular data roaming",
+    defaultValue: false,
     help: { text: "Switches are cool 😎, but data roaming is usually not." },
   },
 

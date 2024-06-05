@@ -86,7 +86,7 @@ export const useInputSwitches = <T extends object>(
     const finalState: Record<string, object | string | number | boolean> = {};
     // append each field to form data depending on file type
     Object.entries(data)
-      .filter(([, value]) => !!value) // only send defined fields
+      .filter(([, value]) => value !== undefined) // only send defined fields
       .forEach(([key, value]) => {
         if (value instanceof File) {
           fd.append(key, value, value.name);
