@@ -26,7 +26,13 @@ export const SwitchToggle = ({
       rules={options}
       render={({ field }) => {
         return (
-          <div className={cn("flex flex-col gap-3 w-full", hidden && "hidden")}>
+          <div
+            className={cn(
+              "flex flex-col gap-3 w-full",
+              hidden && "hidden",
+              disabled && "opacity-50"
+            )}
+          >
             {error && error.message ? (
               <p className="text-red-700 text-sm">{error.message as string}</p>
             ) : null}
@@ -36,7 +42,7 @@ export const SwitchToggle = ({
                 <div className="grow flex flex-col w-full gap-2 justify-start">
                   <Label
                     htmlFor={name}
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed"
                   >
                     {label}
                   </Label>

@@ -38,10 +38,16 @@ export const SwitchChoice = ({
       rules={options}
       render={({ field }) => {
         return (
-          <div className={cn("flex flex-col gap-3 w-full", hidden && "hidden")}>
+          <div
+            className={cn(
+              "flex flex-col w-full",
+              hidden && "hidden",
+              disabled && "opacity-50"
+            )}
+          >
             <Label
               htmlFor={name}
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed pt-2 pb-1"
             >
               {label}
             </Label>
@@ -56,7 +62,7 @@ export const SwitchChoice = ({
                 disabled={disabled}
                 onValueChange={field.onChange}
                 defaultValue={field.value}
-                className="flex flex-col space-y-1"
+                className="flex flex-col space-y-1 pt-2"
               >
                 {choices.map(({ value, label: choiceLabel, disabled }, i) => (
                   <div
@@ -79,23 +85,30 @@ export const SwitchChoice = ({
                 ))}
               </RadioGroup>
             ) : (
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <SelectTrigger className={cn(widthToClassName(width))}>
-                  {choices.find((c) => c.value === field.value)?.label ??
-                    placeholder}
-                </SelectTrigger>
-                <SelectContent>
-                  {choices.map(({ value, label: choiceLabel, disabled }, i) => (
-                    <SelectItem
-                      key={`choice-${name}-${i}`}
-                      value={value as string}
-                      disabled={disabled}
-                    >
-                      {choiceLabel}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <div className="pt-2">
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <SelectTrigger className={cn(widthToClassName(width))}>
+                    {choices.find((c) => c.value === field.value)?.label ??
+                      placeholder}
+                  </SelectTrigger>
+                  <SelectContent>
+                    {choices.map(
+                      ({ value, label: choiceLabel, disabled }, i) => (
+                        <SelectItem
+                          key={`choice-${name}-${i}`}
+                          value={value as string}
+                          disabled={disabled}
+                        >
+                          {choiceLabel}
+                        </SelectItem>
+                      )
+                    )}
+                  </SelectContent>
+                </Select>
+              </div>
             )}
           </div>
         );

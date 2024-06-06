@@ -114,6 +114,9 @@ export const formConfig: SwitchInput[] = [
     type: "text",
     name: "disabled",
     label: "You cannot enter anything here",
+    help: {
+      text: "This field is disabled, so you can't interact with it",
+    },
     disabled: true,
   },
 

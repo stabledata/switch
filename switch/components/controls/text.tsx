@@ -21,8 +21,14 @@ export const SwitchTextField = ({
   const error = errors !== undefined ? errors[name] : undefined;
 
   return (
-    <div className={cn("flex flex-col w-full items-start", hidden && "hidden")}>
-      <Label htmlFor={name} className="py-2 peer-disabled:opacity-70">
+    <div
+      className={cn(
+        "flex flex-col w-full items-start",
+        hidden && "hidden",
+        disabled && "opacity-50"
+      )}
+    >
+      <Label htmlFor={name} className="pt-2 pb-1 opacity-70">
         {label}
       </Label>
       <Help help={help} />
@@ -34,7 +40,7 @@ export const SwitchTextField = ({
           id={name}
           placeholder={placeholder}
           className={cn(
-            "my-2 peer",
+            "my-2",
             widthToClassName(width),
             error && "border-red-700"
           )}
@@ -47,7 +53,7 @@ export const SwitchTextField = ({
           id={name}
           placeholder={placeholder}
           className={cn(
-            "my-2 peer",
+            "my-2",
             widthToClassName(width),
             error && "border-red-700"
           )}
