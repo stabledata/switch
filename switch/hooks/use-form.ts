@@ -1,3 +1,4 @@
+import React from "react";
 import {
   FieldErrors,
   FieldValues,
@@ -11,6 +12,7 @@ export type SubmitHandler<T> = (fd: FormData, state: T) => void | Promise<void>;
 export type Form<T> = {
   fields: SwitchInputField[];
   onSubmit: SubmitHandler<T>;
+  onChange?: (data: Partial<T>) => void;
   realtime?: boolean;
 };
 
@@ -62,50 +64,66 @@ export const useInputSwitches = <T extends object>(
     watch,
     onSubmit,
     realtime,
+    onChange,
   } = form ?? {};
 
   // observe changes as they happen for switches that are "realtime" enabled
-  const changedState = Object.values(form.fields)
-    // fields can be realtime, or the whole form can be as well
-    .filter((field: SwitchInputField) => field.realtime || realtime)
-    .map((field: SwitchInputField) => ({
-      name: field.name,
-      value: watch(field.name),
-    }))
-    .reduce(
-      (builder, { name, value }) => ({
-        ...builder,
-        [name]: value,
-      }),
-      {}
-    );
+  const changedState = React.useMemo(
+    () =>
+      Object.values(form.fields)
+        // fields can be realtime, or the whole form can be as well
+        .filter((field: SwitchInputField) => field.realtime || realtime)
+        .map((field: SwitchInputField) => ({
+          name: field.name,
+          value: watch(field.name),
+        }))
+        .reduce(
+          (builder, { name, value }) => ({
+            ...builder,
+            [name]: value,
+          }),
+          {}
+        ),
+    [form.fields, realtime, watch]
+  );
+
+  // if there is an onChange handler in the hook opts, call it
+  // note, you can subscribe in the Form props as well.
+  React.useEffect(() => {
+    if (changedState && onChange !== undefined) {
+      onChange(changedState);
+    }
+  }, [changedState, onChange]);
 
   // transform results into FormData
-  const handleSubmitWithFormData = (data: FieldValues): FormData => {
-    const fd = new FormData();
-    const finalState: Record<string, object | string | number | boolean> = {};
-    // append each field to form data depending on file type
-    Object.entries(data)
-      .filter(([, value]) => value !== undefined) // only send defined fields
-      .forEach(([key, value]) => {
-        if (value instanceof File) {
-          fd.append(key, value, value.name);
-          // make stateful object friendlier for uploads
-          finalState[key] = {
-            name: value.name,
-            type: value.type,
-            size: value.size,
-          };
-        } else {
-          // otherwise, just set the kv pair.
-          fd.set(key, value);
-          finalState[key] = value;
-        }
-      });
+  const handleSubmitWithFormData = React.useCallback(
+    (data: FieldValues): FormData => {
+      const fd = new FormData();
+      const finalState: Record<string, object | string | number | boolean> = {};
+      // append each field to form data depending on file type
+      Object.entries(data)
+        .filter(([, value]) => value !== undefined) // only send defined fields
+        .forEach(([key, value]) => {
+          if (value instanceof File) {
+            fd.append(key, value, value.name);
+            // make stateful object friendlier for uploads
+            finalState[key] = {
+              name: value.name,
+              type: value.type,
+              size: value.size,
+            };
+          } else {
+            // otherwise, just set the kv pair.
+            fd.set(key, value);
+            finalState[key] = value;
+          }
+        });
 
-    void onSubmit(fd, finalState as T);
-    return fd;
-  };
+      void onSubmit(fd, finalState as T);
+      return fd;
+    },
+    [onSubmit]
+  );
 
   return {
     ...form,

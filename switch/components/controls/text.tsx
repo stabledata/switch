@@ -25,6 +25,7 @@ export const SwitchTextField = ({
       <Label htmlFor={name} className="py-2 peer-disabled:opacity-70">
         {label}
       </Label>
+      <Help help={help} />
       {error && error.message ? (
         <p className="text-red-700 text-sm my-1">{error.message as string}</p>
       ) : null}
@@ -54,7 +55,6 @@ export const SwitchTextField = ({
           {...register(name, options)}
         />
       )}
-      <Help help={help} />
     </div>
   );
 };

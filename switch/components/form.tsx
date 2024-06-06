@@ -27,8 +27,9 @@ export type FormProps<T> = {
 export function SwitchForm<T extends object>({
   form,
   onChange,
-  submitButtonLabel = "Send it",
-  submitButtonLabelInFlight = "Sending...",
+  submitButtonLabel,
+  // we may never need these again :)
+  submitButtonLabelInFlight,
   isInFlight = false,
   className,
 }: FormProps<T>) {
@@ -172,9 +173,11 @@ export function SwitchForm<T extends object>({
           //   );
         }
       })}
-      <Button type="submit" className="submit" disabled={isInFlight}>
-        {isInFlight ? submitButtonLabelInFlight : submitButtonLabel}
-      </Button>
+      {submitButtonLabel ? (
+        <Button type="submit" className="submit" disabled={isInFlight}>
+          {isInFlight ? submitButtonLabelInFlight : submitButtonLabel}
+        </Button>
+      ) : null}
     </form>
   );
 }

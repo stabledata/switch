@@ -1,6 +1,6 @@
 {
   "name": "@stabledata/switch",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "type": "module",
   "main": "switch/dist/esm/index.js",
   "module": "switch/dist/esm/index.js",
