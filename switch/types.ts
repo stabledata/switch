@@ -72,7 +72,6 @@ export type SwitchInputFieldProps = SwitchInputField & {
 export type ControlledInput = SwitchInputFieldProps & {
   control: Control<FieldValues, unknown>;
 };
-
 export type Choice = {
   value?: string | number | boolean;
   label?: string;

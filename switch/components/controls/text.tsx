@@ -33,7 +33,9 @@ export const SwitchTextField = ({
       </Label>
       <Help help={help} />
       {error && error.message ? (
-        <p className="text-red-700 text-sm my-1">{error.message as string}</p>
+        <p className="my-1 text-sm text-red-700 dark:text-red-500">
+          {error.message as string}
+        </p>
       ) : null}
       {type === "multiline" ? (
         <Textarea
@@ -42,7 +44,7 @@ export const SwitchTextField = ({
           className={cn(
             "my-2",
             widthToClassName(width),
-            error && "border-red-700"
+            error && "border-red-700 dark:border-red-500"
           )}
           disabled={disabled as boolean}
           {...register(name, options)}
@@ -55,7 +57,7 @@ export const SwitchTextField = ({
           className={cn(
             "my-2",
             widthToClassName(width),
-            error && "border-red-700"
+            error && "border-red-700 dark:border-red-600"
           )}
           disabled={disabled as boolean}
           {...register(name, options)}

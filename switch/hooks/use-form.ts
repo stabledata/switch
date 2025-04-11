@@ -36,7 +36,7 @@ export const useForm = <T>(form: Form<T>): SwitchBoardForm<T> => {
     );
 
   // non-string defaults need to be serialized
-  const rhf = useRHF({ defaultValues });
+  const rhf = useRHF({ defaultValues, reValidateMode: "onBlur" });
 
   return {
     ...rhf,

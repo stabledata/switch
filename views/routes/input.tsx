@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { formConfig } from '../demo-form-config.js';
+import { formConfig } from "../demo-form-config.js";
 import { SwitchForm } from "switch/components/form";
 import { useForm } from "switch/hooks/use-form";
 import React from "react";
@@ -147,6 +147,7 @@ export type SwitchInputField = {
             form={form}
             onChange={handleRealtimeChanges}
             className="mb-5"
+            submitButtonLabel="Send it"
           />
           {result ? (
             <pre className="text-sm w-full">
