@@ -32,12 +32,31 @@ function FormDemo() {
   const form = useForm({ fields: formConfig, onSubmit, realtime: useRealtime });
 
   return (
-    <div className="container mx-auto px-6">
+    <div className="container px-6 mx-auto">
+      <h1 className="mt-8 text-2xl font-bold">Inputs Field "Switchboard"</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20">
-        <div className="flex flex-col gap-4 py-6 text-right">
-          <h1>Inputs Field "Switchboard"</h1>
-          <h4>a.k.a Form</h4>
-          <p className="text-md leading-8">
+        <div className="flex flex-col gap-4 py-6">
+          <h1>Preview</h1>
+          <h4>
+            Try me! Fill out the fields. Also check the console for updates.
+          </h4>
+          <SwitchForm
+            form={form}
+            onChange={handleRealtimeChanges}
+            className="mb-5"
+            submitButtonLabel="Send it"
+          />
+          {result ? (
+            <pre className="w-full text-sm">
+              {JSON.stringify(result, null, 2)}
+            </pre>
+          ) : (
+            <p>Submit the form to see submitted data here.</p>
+          )}
+        </div>
+        <div className="flex flex-col gap-4 py-6">
+          <h4 className="text-lg font-bold">Form Features</h4>
+          <p className="leading-8 text-md">
             Forms are configured using serializable data structures.
           </p>
           <p>Consider, a simple text control:</p>
@@ -136,26 +155,6 @@ export type SwitchInputField = {
 };
 `.toString()}
           </pre>
-        </div>
-
-        <div className="flex flex-col py-6 gap-4">
-          <h1>Preview</h1>
-          <h4>
-            Try me! Fill out the fields. Also check the console for updates.
-          </h4>
-          <SwitchForm
-            form={form}
-            onChange={handleRealtimeChanges}
-            className="mb-5"
-            submitButtonLabel="Send it"
-          />
-          {result ? (
-            <pre className="text-sm w-full">
-              {JSON.stringify(result, null, 2)}
-            </pre>
-          ) : (
-            <p>Submit the form to see submitted data here.</p>
-          )}
         </div>
       </div>
     </div>

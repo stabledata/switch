@@ -27,16 +27,20 @@ h3 {
   );
 }
 
+.container a {
+  @apply text-blue-500;
+}
+
 .background-base {
   background-color: #fff;
 }
 
 .code {
-  @apply text-left text-sm p-4 bg-neutral-100 rounded-md whitespace-break-spaces;
+  @apply p-4 text-xs text-left rounded-md bg-neutral-100 whitespace-break-spaces;
 }
 
 .header {
-  @apply flex gap-10 items-center justify-center py-4 border-b mb-3 text-sm background-base;
+  @apply flex items-center justify-center gap-10 py-4 mb-3 text-sm border-b background-base;
 }
 
 body.dark {
